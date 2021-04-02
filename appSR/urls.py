@@ -8,5 +8,6 @@ router.register('numbers', views.NumbersViewSet)
 
 urlpatterns = [
     path('getNumbers/', views.list_number),
+    path('postNumbers/', views.generate_numbers),
     path('', include(router.urls)),
 ]

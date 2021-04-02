@@ -85,6 +85,9 @@ CORS_ALLOW_METHODS = [
     'OPTIONS'
 ]
 
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
+
 ROOT_URLCONF = 'systemy_rozproszone.urls'
 
 TEMPLATES = [

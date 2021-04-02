@@ -1,9 +1,11 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework import viewsets, generics
 from rest_framework.response import Response
 from rest_framework.utils import json
 from appSR.models import Numbers
 from appSR.serializers import NumbersSerializer
+import random
 
 
 class NumbersViewSet(viewsets.ModelViewSet):
@@ -18,6 +20,20 @@ def list_number(request):
         numbers.append(elem.value)
     return JsonResponse(numbers, safe=False)
 
+
+@csrf_exempt
+def generate_numbers(request):
+    if request.method == "POST":
+        first = json_body(request, 'first')
+        last = json_body(request, 'last')
+        size = json_body(request, 'size')
+
+        for i in range(size):
+            number = random.randint(first, last)
+            db_number = Numbers(value=number)
+            db_number.save()
+
+        return HttpResponse("Okej")
 
 
 
