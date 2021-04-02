@@ -25,7 +25,7 @@ SECRET_KEY = '%(60xmlas_o=3v$!lbg7v9j*1^j876qi_0f*%iv1z49pd*b^=t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['77.55.235.251', '0.0.0.0', '127.0.0.1', 'yourrecipe.pl']
 
 
 # Application definition
@@ -66,6 +66,14 @@ CORS_ALLOW_HEADERS = [
     'accept-encoding',
     'x-csrftoken',
     'x-requested-with'
+]
+
+ORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+]
+
+CORS_ORIGIN_REGEX_WHITELIST = [
+    'http://localhost:3000',
 ]
 
 CORS_ALLOW_METHODS = [
