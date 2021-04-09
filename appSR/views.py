@@ -27,15 +27,15 @@ def generate_numbers(request):
         first = json_body(request, 'first')
         last = json_body(request, 'last')
         size = json_body(request, 'size')
+        list_number = []
 
         for i in range(size):
             number = random.randint(first, last)
+            list_number.append(number)
             db_number = Numbers(value=number)
             db_number.save()
 
-        return HttpResponse("Okej")
-
-
+        return JsonResponse(list_number, safe=False)
 
 
 ###############################################################################

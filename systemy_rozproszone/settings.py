@@ -85,8 +85,6 @@ CORS_ALLOW_METHODS = [
     'OPTIONS'
 ]
 
-CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_HTTPONLY = True
 
 ROOT_URLCONF = 'systemy_rozproszone.urls'
 
@@ -118,7 +116,7 @@ DATABASES = {
         'HOST': '77.55.235.251',
         'PORT': '3306',
         'NAME': 'systemy_rozproszone',
-        'USER': 'backend',
+        'USER': 'backend2',
         'PASSWORD': 'inzynierka2020'
     }
 }
