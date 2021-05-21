@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = '%(60xmlas_o=3v$!lbg7v9j*1^j876qi_0f*%iv1z49pd*b^=t'
 DEBUG = True
 
 ALLOWED_HOSTS = ['77.55.235.251', '0.0.0.0', '127.0.0.1', 'yourrecipe.pl']
-
 
 # Application definition
 
@@ -39,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'channels',
     'appSR'
 ]
 
@@ -85,7 +84,6 @@ CORS_ALLOW_METHODS = [
     'OPTIONS'
 ]
 
-
 ROOT_URLCONF = 'systemy_rozproszone.urls'
 
 TEMPLATES = [
@@ -106,7 +104,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'systemy_rozproszone.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -120,7 +117,6 @@ DATABASES = {
         'PASSWORD': 'inzynierka2020'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -140,13 +136,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Warsaw'
 
 USE_I18N = True
 
@@ -154,8 +149,18 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
+
+ASGI_APPLICATION = 'systemy_rozproszone.routing.application'
